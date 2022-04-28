@@ -3,9 +3,9 @@ import { Space } from 'antd'
 
 import { ToolItemProps } from './ToolIteType'
 
-export const ToolItem: React.FC<ToolItemProps> = (props: ToolItemProps) => {
+export const ToolItem: React.FC<ToolItemProps> = (props) => {
   return (
-    <div>
+    <div style={props.style}>
       <Space>
         {props.component}
       </Space>

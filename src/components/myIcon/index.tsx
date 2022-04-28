@@ -1,0 +1,6 @@
+export { TitleIcon } from './Title'
+export { CodeIcon } from './Code'
+export { CodeBlockIcon } from './CodeBlock'
+export { CodeSnippetIcon } from './CodeSnippet'
+export { FormulaIcon } from './Formula'
+export { QuoteIcon } from './Quote'
