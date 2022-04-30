@@ -12,7 +12,7 @@ export const CodeIcon: React.FC<propsType> = (props: propsType) => {
   )
 
   return (
-    <div style={{lineHeight}} onMouseMove={(e) => {console.log(e)}}>
+    <div style={{lineHeight}}>
       <Icon component={CodeSvg} {...props} />
     </div>
   )

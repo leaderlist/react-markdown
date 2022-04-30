@@ -31,6 +31,20 @@ export const IconStyle = {
   lineHeight: '24px'
 }
 
+function showTipMessageHandle (showed, setShowed) {
+  return function () {
+    console.log('鼠标滑过，需要显示提示信息')
+    setShowed(true)
+  }
+}
+
+function hidenTipMessage (showed, setShowed) {
+  return function () {
+    console.log('鼠标离开，需要隐藏提示信息')
+    setShowed(false)
+  }
+}
+
 export const leftBar: ToolItemList  = [
   {
     name: 'Title',
@@ -40,10 +54,10 @@ export const leftBar: ToolItemList  = [
     childToolList: [],
     childType: ToolItemType.hasIcon,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -53,10 +67,10 @@ export const leftBar: ToolItemList  = [
     icon: <BoldOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -66,10 +80,10 @@ export const leftBar: ToolItemList  = [
     icon: <ItalicOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -79,10 +93,10 @@ export const leftBar: ToolItemList  = [
     icon: <QuoteIcon style={IconStyle} />,
     childToolList: null,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -92,10 +106,10 @@ export const leftBar: ToolItemList  = [
     icon: <LinkOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -105,10 +119,10 @@ export const leftBar: ToolItemList  = [
     icon: <PictureOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -118,10 +132,10 @@ export const leftBar: ToolItemList  = [
     icon: <CodeIcon style={IconStyle} />,
     childToolList: null,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -131,10 +145,10 @@ export const leftBar: ToolItemList  = [
     icon: <CodeBlockIcon style={IconStyle} />,
     childToolList: null,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -144,10 +158,10 @@ export const leftBar: ToolItemList  = [
     icon: <CodeSnippetIcon style={IconStyle} />,
     childToolList: null,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -157,10 +171,10 @@ export const leftBar: ToolItemList  = [
     icon: <UnorderedListOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -170,10 +184,10 @@ export const leftBar: ToolItemList  = [
     icon: <OrderedListOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -183,10 +197,10 @@ export const leftBar: ToolItemList  = [
     icon: <DisconnectOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -196,10 +210,10 @@ export const leftBar: ToolItemList  = [
     icon: <CheckSquareOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -209,10 +223,10 @@ export const leftBar: ToolItemList  = [
     icon: <TableOutlined style={IconStyle} />,
     childToolList: null,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -223,10 +237,10 @@ export const leftBar: ToolItemList  = [
     childToolList: [],
     childType: ToolItemType.hasIcon,
     isCustom: true,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -237,10 +251,10 @@ export const leftBar: ToolItemList  = [
     childToolList: [],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -251,12 +265,10 @@ export const leftBar: ToolItemList  = [
     childToolList: [],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
-    onMouseOver: function () {
-      // eslint-disable-next-line no-debugger
-      debugger
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   },
   {
@@ -267,10 +279,10 @@ export const leftBar: ToolItemList  = [
     childToolList: [],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
-    onMouseOver: function () {
-      return function (e) {
-        console.log(e)
-      }
+    onMouseEnter: showTipMessageHandle,
+    onMouseLeave: hidenTipMessage,
+    onClick: function (e) {
+      console.log(e)
     }
   }
 ]

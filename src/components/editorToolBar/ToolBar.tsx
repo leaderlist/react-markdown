@@ -28,7 +28,9 @@ export const ToolBar: React.FC = () => {
                 {...item}
                 component={item.icon}
                 style={item.isCustom ? itemStyle : {fontSize: '20px', lineHeight: '20px', ...itemStyle}}
-                onMouseOver={item.onMouseOver}
+                onMouseEnter={item.onMouseEnter}
+                onMouseLeave={item.onMouseLeave}
+                onClick={item.onClick}
               />
             )
           })

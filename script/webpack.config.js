@@ -4,10 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ESlintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtract = require('mini-css-extract-plugin')
 const CSSMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.tsx',
-  devtool: process.env.NODE_ENV === 'development' ? 'eval-source-map' : false,
+  devtool: process.env.NODE_ENV === 'development' ? 'cheap-module-source-map' : false,
   module: {
     rules: [
       {
@@ -80,7 +81,10 @@ module.exports = {
       filename: 'static/css/[name]_[hash:6].css',
       chunkFilename: 'static/css/[id].css'
     }),
-    new CSSMinimizerPlugin()
+    new CSSMinimizerPlugin(),
+    new webpack.SourceMapDevToolPlugin({
+
+    })
   ],
   devServer: {
     static: {

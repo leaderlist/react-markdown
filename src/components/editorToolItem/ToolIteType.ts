@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { MouseEvent/* , MouseEventHandler */ } from 'react'
 export enum ToolItemType {
   singleTool = 0,
   toolGroup = 1,
@@ -28,7 +27,9 @@ export interface ToolItemProps {
   component?: any,
   style?: Object,
   isCustom: boolean,
-  onMouseOver: () => Function
+  onMouseEnter: (state: boolean, setState: React.Dispatch<React.SetStateAction<boolean>>) => any,
+  onMouseLeave: (state: boolean, setState: React.Dispatch<React.SetStateAction<boolean>>) => any,
+  onClick: (e: MouseEvent) => void
 }
 
 export type ToolItemList = Array<ToolItemProps>
