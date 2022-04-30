@@ -2,6 +2,7 @@
 .item {
   position: relative;
 }
+
 .tipMessage {
   background: @arrowColor;
   color: #fff;
@@ -9,7 +10,7 @@
   line-height: 14px;
   height: 24px;
   position: absolute;
-  bottom: 32px;
+  bottom: 36px;
   z-index: 100;
   box-sizing: border-box;
   padding: 5px 7px;
@@ -19,12 +20,18 @@
 }
 
 .childrenTool {
-  background: green;
-  height: 10px;
-  width: 10px;
+  background: #fff;
   position: absolute;
-  top: -14px;
+  top: 28px;
+  border: 1px solid rgb(163, 157, 157);
+  border-radius: 5px;
   z-index: 100;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.toolComponent :hover {
+  background-color: beige;
 }
 
 .arrow {

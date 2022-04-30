@@ -22,13 +22,27 @@ import {
   CodeBlockIcon,
   CodeSnippetIcon,
   FormulaIcon,
-  QuoteIcon
+  QuoteIcon,
+  H1Icon,
+  H2Icon,
+  H3Icon,
+  H4Icon,
+  H5Icon,
+  H6Icon,
+  InlineFormulacon,
+  BlockFormulacon
 } from '../myIcon'
 
 export const IconStyle = {
   width: 24,
   height: 24,
   lineHeight: '24px'
+}
+
+const childrenStyle = {
+  width: 16,
+  height: 16,
+  lineHeight: '16px'
 }
 
 function showTipMessageHandle (showed, setShowed) {
@@ -51,7 +65,32 @@ export const leftBar: ToolItemList  = [
     tip: '标题',
     type: ToolItemType.toolGroup,
     icon: <TitleIcon style={IconStyle} />,
-    childToolList: [],
+    childToolList: [
+      {
+        icon: <H1Icon style={childrenStyle} />,
+        message: '一级标题'
+      },
+      {
+        icon: <H2Icon style={childrenStyle} />,
+        message: '二级标题'
+      },
+      {
+        icon: <H3Icon style={childrenStyle} />,
+        message: '三级标题'
+      },
+      {
+        icon: <H4Icon style={childrenStyle} />,
+        message: '四级标题'
+      },
+      {
+        icon: <H5Icon style={childrenStyle} />,
+        message: '五级标题'
+      },
+      {
+        icon: <H6Icon style={childrenStyle} />,
+        message: '六级标题'
+      }
+    ],
     childType: ToolItemType.hasIcon,
     isCustom: true,
     onMouseEnter: showTipMessageHandle,
@@ -234,7 +273,16 @@ export const leftBar: ToolItemList  = [
     tip: '公式',
     type: ToolItemType.toolGroup,
     icon: <FormulaIcon style={IconStyle} />,
-    childToolList: [],
+    childToolList: [
+      {
+        icon: <InlineFormulacon style={childrenStyle} />,
+        message: '行内公式'
+      },
+      {
+        icon: <BlockFormulacon style={childrenStyle} />,
+        message: '块级公式'
+      }
+    ],
     childType: ToolItemType.hasIcon,
     isCustom: true,
     onMouseEnter: showTipMessageHandle,
@@ -248,7 +296,48 @@ export const leftBar: ToolItemList  = [
     tip: '图表',
     type: ToolItemType.toolGroup,
     icon: <ApartmentOutlined style={IconStyle} />,
-    childToolList: [],
+    childToolList: [
+      {
+        icon: null,
+        message: 'Mermaid图表'
+      },
+      {
+        icon: null,
+        message: '流程图'
+      },
+      {
+        icon: null,
+        message: '时序图'
+      },
+      {
+        icon: null,
+        message: '类图'
+      },
+      {
+        icon: null,
+        message: '状态图'
+      },
+      {
+        icon: null,
+        message: '关系图'
+      },
+      {
+        icon: null,
+        message: '旅程图'
+      },
+      {
+        icon: null,
+        message: '甘特图'
+      },
+      {
+        icon: null,
+        message: '饼状图'
+      },
+      {
+        icon: null,
+        message: '开发中......'
+      }
+    ],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
     onMouseEnter: showTipMessageHandle,
@@ -262,7 +351,40 @@ export const leftBar: ToolItemList  = [
     tip: '主题',
     type: ToolItemType.toolGroup,
     icon: <AppstoreOutlined style={IconStyle} />,
-    childToolList: [],
+    childToolList: [
+      {
+        icon: null,
+        message: 'Markdown主题'
+      },
+      {
+        icon: null,
+        message: 'juejin'
+      },
+      {
+        icon: null,
+        message: 'github'
+      },
+      {
+        icon: null,
+        message: 'smartblue'
+      },
+      {
+        icon: null,
+        message: 'cyanosis'
+      },
+      {
+        icon: null,
+        message: 'changing-cyan'
+      },
+      {
+        icon: null,
+        message: 'fancy'
+      },
+      {
+        icon: null,
+        message: '开发中......'
+      }
+    ],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
     onMouseEnter: showTipMessageHandle,
@@ -276,7 +398,32 @@ export const leftBar: ToolItemList  = [
     tip: '代码高亮',
     type: ToolItemType.toolGroup,
     icon: <HighlightOutlined style={IconStyle} />,
-    childToolList: [],
+    childToolList: [
+      {
+        icon: null,
+        message: '代码高亮样式'
+      },
+      {
+        icon: null,
+        message: 'a11y-light'
+      },
+      {
+        icon: null,
+        message: 'a11y-dark'
+      },
+      {
+        icon: null,
+        message: 'agete'
+      },
+      {
+        icon: null,
+        message: 'an-old-hope'
+      },
+      {
+        icon: null,
+        message: '开发中'
+      }
+    ],
     childType: ToolItemType.notHasIcon,
     isCustom: false,
     onMouseEnter: showTipMessageHandle,
