@@ -4,58 +4,77 @@ export type configType = {
   content: string
 }
 
+const titleStyle = {
+  color: '#1ba2f0'
+}
+
 const contentConfigs = {
+  default: {
+    reg: undefined,
+    style: {},
+    content: undefined
+  },
   h1: {
-    reg: /^# [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^#[\s][^\r]*$/g,
+    style: titleStyle,
     content: '# {}'
   },
   h2: {
-    reg: /^## [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^##[\s][^\r]*$/g,
+    style: titleStyle,
     content: '## {}'
   },
   h3: {
-    reg: /^### [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^###[\s][^\r]*$/g,
+    style: titleStyle,
     content: '### {}'
   },
   h4: {
-    reg: /^#### [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^####[\s][^\r]*$/g,
+    style: titleStyle,
     content: '#### {}'
   },
   h5: {
-    reg: /^##### [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^#####[\s][^\r]*$/g,
+    style: titleStyle,
     content: '##### {}'
   },
   h6: {
-    reg: /^###### [^\r]*$/g,
-    color: '#1ba2f0',
+    reg: /^######[\s][^\r]*$/g,
+    style: titleStyle,
     content: '###### {}'
   },
   blod: {
     reg: /^\*\*[^\r]*\*\*$/g,
-    color: '#fd7741',
+    style: {
+      color: '#fd7741',
+      fontWeight: 700
+    },
     content: '**{}**'
   },
   italic: {
     reg: /^\*[^\r|**]*\*$/g,
-    color: '#000000',
+    style: {
+      color: '#000000',
+      fontStyle: 'italic'
+    },
     content: '*{}*'
   },
   quote: {
     reg: /^> /g,
-    color: '#fd7741',
+    style: {
+      color: '#fd7741'
+    },
     content: '> {}'
   },
   link: {
     reg: /^\[[^\r]*\]\([\S]*\)$/g,
-    color: [
+    style: {
+      color: [
       '#fd7741',
       '#bb51b8'
-    ],
+      ]
+    },
     content: [
       '[{}]',
       '({})'
@@ -63,11 +82,13 @@ const contentConfigs = {
   },
   picture: {
     reg: /^!\[[^\r]*\]\([\S]*\)$/g,
-    color: [
-      '#000',
-      '#fd7741',
-      '#bb51b8'
-    ],
+    style: {
+      color: [
+        '#000',
+        '#fd7741',
+        '#bb51b8'
+      ]
+    },
     content: [
       '!',
       '[{}]',
@@ -76,27 +97,37 @@ const contentConfigs = {
   },
   code: {
     reg: /^`.*`$/g,
-    color: '#009e9d',
+    style: {
+      color: '#009e9d'
+    },
     content: '`{}`'
   },
   codeBlock: {
-    reg: /^```[a-z]{0,2}\n.*```$/g,
-    color: '#009e9d',
+    reg: /^```[a-z]{0,2}\n.*$/g,
+    style: {
+      color: '#009e9d'
+    },
     content: '```{}\n{}```'
   },
   unorderedList: {
     reg: /^- /g,
-    color: undefined,
+    style: {
+      color: undefined
+    },
     content: '- {}'
   },
   orderedList: {
     reg: /^[1-9]{1,2}/g,
-    color: undefined,
+    style: {
+      color: undefined
+    },
     content: '{}. {}'
   },
   deleteLine: {
     reg: /^~~[^/r]*~~$/g,
-    color: '#009e9d',
+    style: {
+      color: '#009e9d'
+    },
     content: '~~{}~~'
   }
 }

@@ -1,4 +1,4 @@
-import React, { useRef, memo, useEffect, useCallback } from 'react'
+import React, { useRef, memo, useEffect, useCallback, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import style from './InoutArea.module.less'
@@ -6,6 +6,8 @@ import { editMarkdownData } from '@/redux/markDown/action'
 import { markdownDataType } from '@/redux/markDown/reducerType'
 import { getEditType } from '@/utils/index'
 import { useSelector } from '@/redux/useSelector'
+
+import { getCurrentComponentConfig } from './lib'
 
 type inputAreaPoprsType = {
   onEnterDown: () => void,
@@ -20,7 +22,8 @@ export const InputArea: React.FC<inputAreaPoprsType> = memo((props: inputAreaPop
   const editArea = useRef<HTMLSpanElement>(null)
   // 设置模块内状态判断是否完成本模块输入
   let isEditEnd = false
-  let currentType = type
+  let [currentType, setCurrentType] = useState(type)
+  let [currentStyle, setCurrentStyle] = useState({})
   // 获取dispatch
   const dispatch = useDispatch()
 
@@ -68,7 +71,7 @@ export const InputArea: React.FC<inputAreaPoprsType> = memo((props: inputAreaPop
     console.log(targetType, innerText)
     if (targetType !== 'default') {
       const currentPayload = markdownData[index]
-      currentType = targetType
+      setCurrentType(targetType)
       dispatch(editMarkdownData({
         ...currentPayload,
         type: targetType
@@ -80,6 +83,13 @@ export const InputArea: React.FC<inputAreaPoprsType> = memo((props: inputAreaPop
     console.log('inputArea组件被加载')
     editArea.current?.focus()
   }, [])
+  // 监听currentType,判断对应的组件
+  useEffect(() => {
+    console.log('组件类型被修改' + currentType)
+    const currentConfig = getCurrentComponentConfig(currentType)
+    currentConfig && setCurrentStyle(currentConfig)
+    console.log(currentStyle)
+  }, [currentType])
 
   return (
     <pre
@@ -90,6 +100,7 @@ export const InputArea: React.FC<inputAreaPoprsType> = memo((props: inputAreaPop
     >
       <span
         className={style.editArea}
+        style={currentStyle}
         contentEditable
         ref={editArea}
         onInput={inputHandle}
