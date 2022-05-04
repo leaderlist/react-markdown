@@ -1,4 +1,4 @@
-import { ToolItemType , ToolItemList } from '../editorToolItem/ToolIteType'
+import { ToolItemType , ToolItemList } from '@/components/editorToolItem/ToolIteType'
 import React from 'react'
 
 import {
@@ -299,7 +299,8 @@ export const leftBar: ToolItemList  = [
     childToolList: [
       {
         icon: null,
-        message: 'Mermaid图表'
+        message: 'Mermaid图表',
+        isTitle: true
       },
       {
         icon: null,
@@ -354,7 +355,8 @@ export const leftBar: ToolItemList  = [
     childToolList: [
       {
         icon: null,
-        message: 'Markdown主题'
+        message: 'Markdown主题',
+        isTitle: true
       },
       {
         icon: null,
@@ -401,7 +403,8 @@ export const leftBar: ToolItemList  = [
     childToolList: [
       {
         icon: null,
-        message: '代码高亮样式'
+        message: '代码高亮样式',
+        isTitle: true
       },
       {
         icon: null,
@@ -421,7 +424,7 @@ export const leftBar: ToolItemList  = [
       },
       {
         icon: null,
-        message: '开发中'
+        message: '开发中......'
       }
     ],
     childType: ToolItemType.notHasIcon,

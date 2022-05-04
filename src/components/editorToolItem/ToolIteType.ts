@@ -1,4 +1,4 @@
-import React, { CSSProperties, MouseEvent/* , MouseEventHandler */ } from 'react'
+import React, { MouseEvent/* , MouseEventHandler */ } from 'react'
 export enum ToolItemType {
   singleTool = 0,
   toolGroup = 1,
@@ -6,10 +6,11 @@ export enum ToolItemType {
   notHasIcon
 }
 
-export type childrenTool = {
+export type childrenToolType = {
   icon: any,
   message: string,
-  key?: React.Attributes['key']
+  key?: React.Attributes['key'],
+  isTitle?: boolean
 }
 
 /**
@@ -21,7 +22,7 @@ export interface ToolItemProps {
   tip: string,
   type: ToolItemType.singleTool | ToolItemType.toolGroup,
   icon: any,
-  childToolList: Array<childrenTool> | null,
+  childToolList: Array<childrenToolType> | null,
   childType?: ToolItemType.hasIcon | ToolItemType.notHasIcon,
   component?: any,
   style?: Object,

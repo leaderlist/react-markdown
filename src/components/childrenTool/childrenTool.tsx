@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { childrenTool } from '../editorToolItem/ToolIteType'
+import { childrenToolType } from '@/components/editorToolItem/ToolIteType'
 import style from './childrenTool.module.less'
 
-export const ChildrenTool: React.FC<childrenTool> = (props: childrenTool) => {
-  const { icon, message } = props
+export const ChildrenTool: React.FC<childrenToolType> = (props: childrenToolType) => {
+  const { icon, message, isTitle } = props
   return (
-    <div className={style.container}>
+    <div className={`${style.container} ${isTitle ? style.hasTitle : ''}`}>
       <div className={style.leftIcon}>
         {
           icon !== null && icon

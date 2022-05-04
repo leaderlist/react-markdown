@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, memo } from 'react'
 import { Space } from 'antd'
 
 import { ToolItemType, ToolItemProps } from './ToolIteType'
 import { ChildrenTool } from '../childrenTool'
 import style from './ToolItem.module.less'
 
-export const ToolItem: React.FC<ToolItemProps> = (props) => {
+export const ToolItem: React.FC<ToolItemProps> = memo((props) => {
   const [ showed, setShowed ] = useState(false)
   const [ arrowStyle, setArrowStyle ] = useState({
     top: '',
@@ -28,12 +28,10 @@ export const ToolItem: React.FC<ToolItemProps> = (props) => {
           top: `${topNum}px`,
           right: `${rightNum}px`
         })
-        console.log(`set tip arrowStyle to: top-${topNum} right-${topNum}`)
       }
       if (!tipRight) {
         const containerRight = tipContainerRef.current.clientWidth / 2 - (IconContainerRef.current.clientWidth / 2)
         setTipRight(containerRight)
-        console.log(`set tip right to ${tipRight}`)
       }
     }
   }, [showed])
@@ -60,7 +58,6 @@ export const ToolItem: React.FC<ToolItemProps> = (props) => {
             >
               {
                 props.childToolList !== null && props.childToolList.map((_item) => {
-                  console.log(_item.message)
                   return (
                     <ChildrenTool
                       {..._item}
@@ -83,4 +80,4 @@ export const ToolItem: React.FC<ToolItemProps> = (props) => {
       </div>
     </>
   )
-}
+})

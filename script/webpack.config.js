@@ -38,15 +38,15 @@ module.exports = {
             }
           },
           {
+            loader: 'postcss-loader'
+          },
+          {
             loader: 'less-loader',
             options: {
               lessOptions: {
                 javascriptEnables: true
               }
             }
-          },
-          {
-            loader: 'postcss-loader'
           }
         ]
       },
@@ -106,7 +106,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src/')
+      '@': path.resolve(__dirname, '../src/')
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
   },
