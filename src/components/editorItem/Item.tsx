@@ -1,47 +1,99 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
 import style from './Item.module.less'
-import { InputArea } from '@/components/inputArea'
 import { useSelector } from '@/redux/useSelector'
-import { markdownDataType } from '@/redux/markDown/reducerType'
-import { addMarkdownData } from '@/redux/markDown/action'
+import { editMarkdownData, addMarkdownData } from '@/redux/markDown/action'
+import { getRandomNum } from '@/utils'
 
-export const EditorItem: React.FC = () => {
-    const [isNewLine, setIsNewLine] = useState(false)
-    const markdownState = useSelector(state => state.markdown)
-    const dispatch = useDispatch()
-    // 子组件按下enter键时，需要开启新的子组件，并且换行显示
-    const enterKeyDownHandle = useCallback(() => {
-        setIsNewLine(true)
-    }, [])
-    // 子组件按下上下键时，需要切换焦点
-    // todo
-    useEffect(() => {
-        if (isNewLine) {
-            console.log('需要换行显示')
-            // 新增一个inputArea组件
-            const payload: markdownDataType = {
-                message: '',
-                index: markdownState.length,
-                type: 'default'
+interface propsType {
+  index: number
+  enterHandle: (number) => void
+  content: string
+  isFocus: boolean
+}
+export const EditorItem: React.FC<propsType> = (props) => {
+  const { index, enterHandle, content, isFocus } = props
+  const spanRef = useRef<HTMLSpanElement>(null)
+  const preRef = useRef<HTMLPreElement>(null)
+  const dispatch = useDispatch()
+  const markDownData = useSelector(state => state.markdown)
+  const [isKeyDownHandle, setIsKeyDownHandle] = useState(false)
+
+  useEffect(() => {
+    isFocus && spanRef.current?.focus()
+    if (spanRef.current && content !== spanRef.current?.innerText) {
+      spanRef.current.innerText = content
+    }
+  }, [])
+
+  const inputHandle = (e) => {
+    if (!isKeyDownHandle) {
+      const innerText = e.target.textContent
+      const oldData = markDownData.find(item => item.index === index)
+      const contentTypes = Object.assign({}, oldData, {content: innerText})
+      dispatch(editMarkdownData(contentTypes))
+    } else {
+      setIsKeyDownHandle(false)
+    }
+  }
+
+  function clickHandle (e) {
+    spanRef.current?.focus()
+  }
+
+  const keyDowmHandle = (e) => {
+    /* console.log(e)
+    console.log(spanRef) */
+    switch (e.code) {
+      case 'Enter':
+        let selection = getSelection()
+        let nextText = ''
+        let currentText = e.target.innerText
+        if (currentText && selection) {
+          nextText = currentText.slice(selection.focusOffset)
+          const newText = currentText.slice(0, selection.focusOffset)
+          const currentData = markDownData.find(item => item.index === index)
+          if (currentData) {
+            const isContentChanged = newText === currentText
+            if (isContentChanged && e.target) {
+              e.target.innerText = newText
             }
-            dispatch(addMarkdownData(payload))
-            setIsNewLine(false)
+            const key = isContentChanged ? currentData.key : getRandomNum(4) + ''
+            const currentPayload = {
+              ...currentData,
+              content: newText,
+              key
+            }
+            setIsKeyDownHandle(true)
+            dispatch(editMarkdownData(currentPayload))
+          }
         }
-    }, [isNewLine])
+        const nextPayload = {
+          content: nextText,
+          index: index + 1,
+          key: getRandomNum(4) + '' + index
+        }
+        dispatch(addMarkdownData(nextPayload))
+        enterHandle(index + 1)
+        e.preventDefault()
+        break
+    }
+  }
 
-    return (
-        <div className={style.editorItem}>
-            {markdownState.map(item => {
-                return (
-                    <InputArea
-                        {...item}
-                        key={`InputArea-${item.index}`}
-                        onEnterDown={enterKeyDownHandle}
-                    ></InputArea>
-                )
-            })}
-        </div>
-    )
+  return (
+    <pre
+      className={style.editBlock}
+      ref={preRef}
+      onClick={clickHandle}
+      onKeyDown={keyDowmHandle}
+    >
+      <span
+        className={style.editArea}
+        onInput={inputHandle}
+        ref={spanRef}
+        contentEditable
+      ></span>
+    </pre>
+  )
 }

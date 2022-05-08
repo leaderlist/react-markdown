@@ -32,6 +32,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/utils/index.ts"],
   "exclude": ["node_modules"]
 }

@@ -1,16 +1,9 @@
+// import { styleType } from '@/publicDefine/contentTypeConfig'
 export interface markdownDataType {
-  message: string,
-  index: number,
-  type: string | 'default'
+  content: string,
+  key: string,
+  index: number
 }
-
-export const defaultData: Array<markdownDataType> = [
-  {
-    message: '',
-    index: 0,
-    type: 'default'
-  }
-]
 
 export type actionType = {type: string, payload: markdownDataType}
 
